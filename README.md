@@ -1,7 +1,7 @@
 # BSRN_Project_22
 
 #Lucian Zimmermann
-#Alex Kunkel
+#Alexander Kunkel 
 #Diego
 #Dennis
 #Jabriel
