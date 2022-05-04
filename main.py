@@ -14,3 +14,7 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+testNum = 5
+if(5 < 10)
+    print("Es funktioniert")
