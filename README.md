@@ -3,5 +3,5 @@
 #Lucian Zimmermann
 #Alexander Kunkel 
 #Diego
-#Dennis
-#Jabriel
+#Dennis Gerstung
+#Jabrail
