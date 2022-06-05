@@ -1,17 +1,32 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import random
+from numpy import mean, sum
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class Conv:
+    random_num = []
+    n = random.sample(range(1, 1000), 5)
+    random_num.append(n)
+    print(random_num)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+class Log:
+    for num in range(len(Conv.random_num)):
+        file = open("file.txt", "w")
+        content = str(Conv.random_num)
+        file.write(content)
+        file.close()
+        file = open("file.txt", "r")
+        content = file.read()
+        print("\nContent in file.txt:\n", content)
+        file.close()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+class Stat:
+    sum = sum(Conv.random_num)
+    avg = mean(Conv.random_num)
+
+
+class Report:
+    print("\nThe sum of List is:\n", Stat.sum)
+    print("\nThe average of List is:\n", Stat.avg)
 
