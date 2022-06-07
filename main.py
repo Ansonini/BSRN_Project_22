@@ -11,15 +11,11 @@ class Conv:                         #Random Number generator
 
 
 class Log:                          #Random nummer von CONV wird in file gespeichert
-    for num in range(len(Conv.random_num)):
-        file = open("file.txt", "w")
-        content = str(Conv.random_num)
-        file.write(content)
+    with open("file.txt", "w") as file:
+        file.write("".join(str(x) for x in Conv.n))         #Liste mit Int in STring und dann in file
+        file.write("\n")
         file.close()
-        file = open("file.txt", "r")
-        content = file.read()
-        print("\nContent in file.txt:\n", content)
-        file.close()
+
 
 
 class Stat:                         #Start wertet die Daten aus
