@@ -14,10 +14,10 @@ class ConvClass:
     random_num.append(n)
     print(random_num)
 
-def Log():
-    for num in range(len(Conv.random_num)):
+def Log(random_num):
+    for num in range(len(random_num)):
         f = open("BSRN_file.txt", "w")
-        content = str(Conv.random_num)
+        content = str(random_num)
         f.write(content)
         f.close()
 
@@ -28,9 +28,9 @@ def LogRead():
     f.close()
 
 class LogClass:
-    for num in range(len(Conv.random_num)):
+    for num in range(len(ConvClass.random_num)):
         file = open("file.txt", "w")
-        content = str(Conv.random_num)
+        content = str(ConvClass.random_num)
         file.write(content)
         file.close()
         file = open("file.txt", "r")
@@ -38,9 +38,9 @@ class LogClass:
         print("\nContent in file.txt:\n", content)
         file.close()
 
-def Stat():
-    sum_num = sum(Conv.random_num)
-    average_num = mean(Conv.random_num)
+def Stat(random_num):
+    sum_num = sum(random_num)
+    average_num = mean(random_num)
 
 def Report_Stat(sum_num, average_num):
     print(sum_num)
@@ -48,10 +48,17 @@ def Report_Stat(sum_num, average_num):
 
 
 class StatTest:
-    sum = sum(Conv.random_num)
-    avg = mean(Conv.random_num)
+    sum = sum(ConvClass.random_num)
+    avg = mean(ConvClass.random_num)
 
 
 class Report:
-    print("\nThe sum of List is:\n", Stat.sum)
-    print("\nThe average of List is:\n", Stat.avg)
+    print("\nThe sum of List is:\n", StatTest.sum)
+    print("\nThe average of List is:\n", StatTest.avg)
+
+print("\n Test func")
+
+Conv()
+Log(Conv())
+Stat(Conv())
+Report_Stat(Stat())
