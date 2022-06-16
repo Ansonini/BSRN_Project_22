@@ -1,6 +1,6 @@
 import random
 import numpy
-import queue
+import multiprocessing
 from numpy import mean, sum
 
 
@@ -14,7 +14,7 @@ class Conv:
 class Log:
     for num in range(len(Conv.random_num)):
         file = open("file.txt", "w")
-        content = str(Conv.random_num)
+        content = q.get(str(Conv.random_num))
         file.write(content)
         file.close()
         file = open("file.txt", "r")
@@ -31,4 +31,15 @@ class Stat:
 class Report:
     print("\nThe sum of List is:\n", Stat.sum)
     print("\nThe average of List is:\n", Stat.avg)
+
+def Queue:
+    q= multiprocessing.Queue()
+    q.put(str(Conv.random_num))
+    Log.content=q.get()
+
+
+
+
+
+
 
