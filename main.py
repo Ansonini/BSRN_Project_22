@@ -34,12 +34,12 @@ class Report:
 
 
 q = Queue()
-while(5<10):
-    q.put(Conv.random_num)
-    summe = sum(q.get())
-    avgerege = mean(q.get())
+q.put(str(Conv.random_num))
+q.put(Conv.random_num)
+q.put(Conv.random_num)
 Log.content = q.get()
 print(Log.content)
+
 summe= sum(q.get())
 avgerege= mean(q.get())
 q.put(summe)
