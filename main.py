@@ -1,4 +1,5 @@
 import random
+import threading
 import numpy
 from  queue import  Queue
 from numpy import mean, sum
@@ -47,9 +48,25 @@ q.put(avgerege)
 print(q.get())
 print(q.get())
 
+q = Queue(maxsize=100)
+
+def worker():
+    while True:
+        item = q.get()
+        print(f'Am Arbeiten {item}')
+        print(f'Fertig {item}')
+        q.task_done()
 
 
+threading.Thread(target=worker, daemon=True).start()
 
+
+for item in range(1001):
+    q.put(item)
+
+
+q.join()
+print('Alles fertig!')
 
 
 
