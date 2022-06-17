@@ -1,32 +1,70 @@
-import random
-from numpy import mean, sum
+import time
+from time import sleep
+from signal import signal, SIGINT
+from sys import exit
+import os
+import sys
+
+import server
+import client
+
+def handler(signal_received, frame):
+    print('\nCTRL+C WURDE GEDRÜCKT, das Programm endet')
+    #kill(pid, signal.SIGEND)
+    exit(0)
 
 
-class Conv:
-    random_num = []
-    n = random.sample(range(1, 1000), 5)
-    random_num.append(n)
-    print(random_num)
+if __name__ == '__main__':
+    signal(SIGINT, handler)
+
+    print('\n[LÄUFT. Drücken Sie CTRL-C um Programm zu stoppen!]\n')
+    txt = "Hallo, dieses Programm betrachtet das Thema 'Interprozesskommunikation'\n"
+    for i in txt:
+        time.sleep(0.1)
+        print(i, end='', flush=True)
+    txt = "Sie haben den Wahl, den Datenaustausch zwischen vier Prozessen durch 'Pipes' , 'Message Queues','Shared Memory' oder 'Sockets' durchzuführen \n"
+    for i in txt:
+        time.sleep(0.05)
+        print(i, end='', flush=True)
+    time.sleep(1)
+    cmd = ""
+    while True:
+        print("WAHL:\n    "
+              "Tippen Sie 'p' ein, wenn sie wollen, Pipes nutzen\n    "
+              "Tippen Sie 'mq' ein, wenn sie wollen Message Queues nutzen\n    "
+              "Tippen Sie 'sm' ein, wenn sie wollen Shared Memory nutzen\n    "
+              "Tippen Sie 's' ein wenn sie wollen Sockets nutzen\n    ")
+        wahl = input()
+
+        if wahl == 'p':
+            print("Sie haben Pipes als Methode gewählt\n")
+
+            
+
+        elif wahl == 'mq':
+            print("Sie haben Message Queues als Methode gewählt\n")
+
+        elif wahl == 'sm':
+            print("Sie haben Shared Memory als Methode gewählt\n")
+
+        elif wahl == 's':
+            print("Sie haben Sockets als Methode gewählt\n")
+
+            pid = os.fork()
+            if pid>0:
+                print("Wir sind Eltern")
+                server.main()
 
 
-class Log:
-    for num in range(len(Conv.random_num)):
-        file = open("file.txt", "w")
-        content = str(Conv.random_num)
-        file.write(content)
-        file.close()
-        file = open("file.txt", "r")
-        content = file.read()
-        print("\nContent in file.txt:\n", content)
-        file.close()
+            elif pid == 0:
+                print("Wir sind Kinder")
+                server.main()
 
+                #client.main()
 
-class Stat:
-    sum = sum(Conv.random_num)
-    avg = mean(Conv.random_num)
+        else :
+            print("Sie haben was flasch eingetippt\n")
+            print("Wählen Sie nochmal\n")
 
-
-class Report:
-    print("\nThe sum of List is:\n", Stat.sum)
-    print("\nThe average of List is:\n", Stat.avg)
-
+    while True:
+        pass
