@@ -48,25 +48,32 @@ q.put(avgerege)
 print(q.get())
 print(q.get())
 
-q = Queue(maxsize=100)
-
-def worker():
-    while True:
-        item = q.get()
-        print(f'Am Arbeiten {item}')
-        print(f'Fertig {item}')
-        q.task_done()
 
 
-threading.Thread(target=worker, daemon=True).start()
 
 
-for item in range(1001):
-    q.put(item)
+class Queue:
 
+	def __init__(self):
+		self.elements = []
 
-q.join()
-print('Alles fertig!')
+	def enqueue(self, data):
+		self.elements.append(data)
+		return data
 
+	def dequeue(self):
+		return self.elements.pop(0)
+
+	def rear(self):
+		return self.elements[-1]
+
+	def front(self):
+		return self.elements[0]
+
+	def is_empty(self):
+		return len(self.elements) == 0
+
+if __name__ == '__main__':
+	queue = Queue()
 
 
