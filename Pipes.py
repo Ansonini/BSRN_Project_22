@@ -1,6 +1,5 @@
 import os
 import random
-import time
 
 r, w = os.pipe()
 pid = os.fork()
