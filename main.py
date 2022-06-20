@@ -12,6 +12,7 @@ class Conv:
     print(random_num)
 
 
+
 class Log:
     for num in range(len(Conv.random_num)):
         file = open("file.txt", "w")
@@ -34,19 +35,8 @@ class Report:
     print("\nThe average of List is:\n", Stat.avg)
 
 
-q = Queue()
-q.put(str(Conv.random_num))
-q.put(Conv.random_num)
-q.put(Conv.random_num)
-Log.content = q.get()
-print(Log.content)
 
-summe= sum(q.get())
-avgerege= mean(q.get())
-q.put(summe)
-q.put(avgerege)
-print(q.get())
-print(q.get())
+
 
 
 
@@ -74,6 +64,14 @@ class Queue:
 		return len(self.elements) == 0
 
 if __name__ == '__main__':
-	queue = Queue()
+    queue = Queue()
+
+    i=0
+
+    länge=len(Conv.random_num)
+    print(länge)
+    for i in range(i,5,1):
+        print(i)
+        queue.enqueue(Conv.random_num[i])
 
 
