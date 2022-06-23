@@ -6,6 +6,9 @@ from numpy import mean, sum
 class Conv:                         #Random Number generator
     random_num = []
     n = random.sample(range(1, 1000), 5)
+
+    #n = 10
+    #n in Pipe rein
     random_num.append(n)
     print(random_num)
 
@@ -21,6 +24,9 @@ class Log:                          #Random nummer von CONV wird in file gespeic
 class Stat:                         #Start wertet die Daten aus
     sum = sum(Conv.random_num)
     avg = mean(Conv.random_num)
+    #pipe raus -- n
+    # x = n
+
 
 
 class Report:                       #Report gibt die Daten wider
