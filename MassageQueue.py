@@ -16,7 +16,8 @@ if pid > 0:
     pid2 = os.fork()
 
     if pid2 > 0:
-        print("Elternprozess")
+        print("Elternprozess =  Conv  " )
+
     while True:
         n = random.sample(range(1, 1000), 1)
         q.put(n)
@@ -26,7 +27,7 @@ if pid > 0:
 
     if pid2 == 0:
         time.sleep(5)
-        print("Child2")
+        print("Kindprozess2 = Log")
         for num in range(q.qsize()):
             content = q.get(num)
             file = open("file2.txt", "w")
@@ -38,7 +39,7 @@ if pid == 0:
     pid3 = os.fork()
     if pid3 > 0:
         time.sleep(10)
-        print("Child1")
+        print("Kindprozess1 = Stat")
 
         print("q2size", q2.qsize())
         durch = int(q2.qsize())
@@ -53,6 +54,6 @@ if pid == 0:
 
     if pid3 == 0:
         time.sleep(15)
-        print("Child from Child")
+        print("Kindprozess von Kindprozess1 = Report")
         print("Summe", q3.get())
         print("Mittelwert", q4.get())
