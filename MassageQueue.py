@@ -28,12 +28,13 @@ if pid > 0:
     if pid2 == 0:
         time.sleep(5)
         print("Kindprozess2 = Log")
+        file = open("file2.txt", "a")
         for num in range(q.qsize()):
             content = q.get(num)
-            file = open("file2.txt", "a")
             file.write(str(content))
             print("\nContent in file2.txt:\n", content)
         file.close()
+
 if pid == 0:
     pid3 = os.fork()
     if pid3 > 0:
