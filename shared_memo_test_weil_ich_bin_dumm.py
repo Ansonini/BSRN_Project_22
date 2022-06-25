@@ -25,3 +25,6 @@ while True:
         shared_mem_1.buf[0] = nummer
         print(shared_mem_1.buf[0])
     sema.release()
+# Log
+while True:
+    sema.acquire()
