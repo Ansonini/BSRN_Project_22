@@ -27,7 +27,7 @@ class Log(Thread):
     def run(self):
         while True:
             sema_Log.acquire()
-            file = open("file_SHM_S.txt", "w")
+            file = open("file_SHM_S.txt", "a")
             content = str(shared_mem_1.buf[0])
             file.write(content)
             file.close()
@@ -59,6 +59,7 @@ class Report(Thread):
             time.sleep(2)
             print("The Sum is : " + str(shared_mem_1.buf[0]))
             print("The Mean is : " + str(shared_mem_1.buf[1]))
+            print("\n")
             sema_Conv.release()
 
 
