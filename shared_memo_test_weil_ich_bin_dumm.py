@@ -13,9 +13,8 @@ sema = Semaphore(1)
 # Creating a random number while the Semaphore allows it writing it into the shared memory block
 while True:
     sema.acquire()
-    num = (random.sample(range(1, 1000), 10))
+    num = (random.sample(range(1, 250), 1))
     print("num", num)
-    for i, c in enumerate(b"Hello world"):
-        shared_mem_1.buf[i] = c
+    shared_mem_1.buf[0] = num
     print(shared_mem_1.buf[0])
     sema.release()

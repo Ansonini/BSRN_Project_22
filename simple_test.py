@@ -1,8 +1,8 @@
 from multiprocessing import shared_memory
 
-shm_a = shared_memory.SharedMemory(name= 'shared_memory', create= True, size= 12)
+shm_a = shared_memory.SharedMemory(name='shared_memory', create=True, size=12)
 
-for i,c in enumerate(b"Hello world"):
+for i, c in enumerate(b"Hello world"):
     shm_a.buf[i] = c
 
 while True:
