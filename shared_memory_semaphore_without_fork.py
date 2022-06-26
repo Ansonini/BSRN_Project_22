@@ -8,8 +8,8 @@ from threading import Thread, Semaphore
 import random
 import time
 
-# Creating the Shared Memory with a Byte size of 10
-shared_mem_1 = shared_memory.SharedMemory(create=True, size=10)
+# Creating the Shared Memory with a Byte size of 8
+shared_mem_1 = shared_memory.SharedMemory(create=True, size=8)
 # Creating my Semaphored for every process
 # Semaphore setting Conv to 1, Log to 0, Stat to 0 and Report to 0
 sema_Conv, sema_Log, sema_Stat, sema_Report = Semaphore(1), Semaphore(0), Semaphore(0), Semaphore(0)
