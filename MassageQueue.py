@@ -1,4 +1,6 @@
-# Alexander Kunkel
+## Alexander Kunkel
+## 1397709
+
 # Implementierung
 import os
 import random

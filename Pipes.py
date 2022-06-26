@@ -1,3 +1,6 @@
+## Dennis Gerstung
+## 1394582
+
 #Os für fork und pipe
 import os
 #Random für den Random-Number-Generator
