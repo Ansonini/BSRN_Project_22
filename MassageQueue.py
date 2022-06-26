@@ -8,28 +8,28 @@ q = Queue(10)
 q2 = Queue(10)
 q3 = Queue()
 q4 = Queue()
-#Erster Prozess wird  erstellt
+# Erster Prozess wird erstellt
 pid = os.fork()
-#feheler meldung
+# Fehler Meldung
 if pid < 0:
     print("fork hat nicht funktioniert")
-#klarstellung, dass es sich um den Elternprozess von pid handelt
+# Klarstellung, dass es sich um den Elternprozess von pid handelt
 if pid > 0:
-#Erstellung vom zweiten Prozess
+    # Erstellung vom zweiten Prozess
     pid2 = os.fork()
-#klarstellung, dass es sich um den Elternprozess von pid2 handelt
+    # Klarstellung, dass es sich um den Elternprozess von pid2 handelt
     if pid2 > 0:
         print("Elternprozess =  Conv  ")
-#Conv
+        # Conv
         while True:
             n = random.sample(range(1, 1000), 1)
             q.put(n)
             q2.put(n)
             if q.full():
                 break
-#klarstellung, dass es sich um den Kindprozess von pid2 handelt
+    # Klarstellung, dass es sich um den Kindprozess von pid2 handelt
     if pid2 == 0:
-#Log
+        # Log
         time.sleep(0.5)
         print("Kindprozess2 = Log")
         file = open("file2.txt", "a")
@@ -38,18 +38,19 @@ if pid > 0:
             file.write(str(content))
             print("\nContent in file2.txt:\n", content)
         file.close()
-#klarstellung, dass es sich um den kindprozess von pid handelt
+# Klarstellung, dass es sich um den kindprozess von pid handelt
 if pid == 0:
-#Erstellung eines neuen Prozesses (wichtig da Stat nicht nur Kind- sondern auch Elternprozess ist)
+    # Erstellung eines neuen Prozesses (wichtig da Stat nicht nur Kind- sondern auch Elternprozess ist)
     pid3 = os.fork()
-#klarstellung, dass es sich um den Elternprozess von pid3 handelt
+    # klarstellung, dass es sich um den Elternprozess von pid3 handelt
     if pid3 > 0:
-#Stat
+        # Stat
         time.sleep(1)
         print("Kindprozess1 = Stat")
         print("q2size", q2.qsize())
         q2größe = int(q2.qsize())
         numbers = []
+        # Umwandlung von Elementen in q2 von str zu int
         for i in range(q2.qsize()):
             verarbeiten = str(q2.get(i))
             numbers.append(int(verarbeiten.strip('[]')))
@@ -57,9 +58,9 @@ if pid == 0:
         mittelWert = (summe / q2größe)
         q3.put(summe)
         q4.put(mittelWert)
-#klarstellung, dass es sich um den Kindprozess von pid3 handelt
+    # Klarstellung, dass es sich um den Kindprozess von pid3 handelt
     if pid3 == 0:
-#Report
+        # Report
         time.sleep(2)
         print("Kindprozess von Kindprozess1 = Report")
         print("Summe", q3.get())
