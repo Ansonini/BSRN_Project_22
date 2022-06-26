@@ -42,8 +42,10 @@ class Log(Thread):
             sema_Log.acquire()
             # öffnet/erstellt eine file mit dem namen "file_SHM_S.txt" mit anhänge recht
             file = open("file_SHM_S.txt", "a")
-            #
+            # die zahl weird aus shared_mem_1.buf[0] ausgelesen und in einen String gecastet
             content = str(shared_mem_1.buf[0])
+            # danach werden die zahl in die file "file_SHM_S.txt" geschrieben
+            # und die "file_SHM_S.txt" wird geschlossen
             file.write(content)
             file.close()
             # unlock the log Semaphore = 1
