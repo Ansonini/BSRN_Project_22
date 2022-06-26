@@ -1,3 +1,5 @@
+# Alexander Kunkel
+# Implementierung
 import os
 import random
 import time
